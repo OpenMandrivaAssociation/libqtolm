@@ -1,3 +1,7 @@
+%define major 3
+%define libpackage %mklibname qtolm %{major}
+%define devpackage %mklibname -d qtolm
+
 %undefine __cmake_in_source_build
 %global appname QtOlm
 %global libname lib%{appname}
@@ -21,12 +25,18 @@ BuildRequires: ninja
 %description
 Special Qt wrapper for libolm library.
 
-%package devel
-Summary: Development files for %{name}
-Requires: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
+%package -n %{libpackage}
+Group:		System/Libraries
 
-%description devel
-%{summary}.
+%description -n %{libpackage}
+Library for special Qt wrapper for libolm.
+
+%package -n %{devpackage}
+Summary: Development files for %{name}
+Requires:	%{libpackage} = %{EVRD}
+
+%description -n %{devpackage}
+Development files for libQtOlm
 
 %prep
 %autosetup -n %{name}-v%{version}
@@ -40,11 +50,11 @@ Requires: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 %install
 %ninja_install -C build
 
-%files
+%files -n %{libpackage}
 %license LICENSE
-%{_libdir}/%{libname}.so.3*
+%{_libdir}/%{libname}.so.%{major}*
 
-%files devel
+%files -n %{devpackage}
 %{_includedir}/%{appname}/
 %{_libdir}/cmake/%{appname}/
 %{_libdir}/pkgconfig/%{appname}.pc
