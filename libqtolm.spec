@@ -14,6 +14,7 @@ Source0: https://gitlab.com/b0/libqtolm/-/archive/v%{version}/%{name}-v%{version
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5Network)
+BuildRequires: qmake5
 BuildRequires: cmake
 BuildRequires: ninja
 
