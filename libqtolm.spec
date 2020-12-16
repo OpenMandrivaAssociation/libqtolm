@@ -15,7 +15,7 @@ BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5Network)
 BuildRequires: cmake
-
+BuildRequires: ninja
 
 %description
 Special Qt wrapper for libolm library.
@@ -34,10 +34,10 @@ Requires: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 %cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_INCLUDEDIR:PATH="include/%{appname}"
-%cmake_build
+%ninja_build
 
 %install
-%cmake_install
+%ninja_install
 
 %files
 %license LICENSE
