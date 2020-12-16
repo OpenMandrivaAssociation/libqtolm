@@ -9,7 +9,7 @@ Release: 1
 License: GPLv3+
 URL: https://gitlab.com/b0/libqtolm/
 Summary: Qt wrapper for libolm
-Source0: https://gitlab.com/b0/libqtolm/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+Source0: https://gitlab.com/b0/libqtolm/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
 
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt5Core)
