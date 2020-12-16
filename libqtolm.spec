@@ -27,6 +27,7 @@ Special Qt wrapper for libolm library.
 
 %package -n %{libpackage}
 Group:		System/Libraries
+Summary:	Library for special Qt wrapper for libolm.
 
 %description -n %{libpackage}
 Library for special Qt wrapper for libolm.
