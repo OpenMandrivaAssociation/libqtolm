@@ -38,7 +38,7 @@ Requires: %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 %ninja_build
 
 %install
-%ninja_install
+%ninja_install -C build
 
 %files
 %license LICENSE
