@@ -8,7 +8,7 @@
 Summary: Qt wrapper for libolm
 Name: libqtolm
 Version: 3.0.1
-Release: 2
+Release: 3
 License: GPLv3+
 Group: System/libraries
 URL: https://gitlab.com/b0/libqtolm/
@@ -26,6 +26,7 @@ Special Qt wrapper for libolm library.
 %package -n %{libname}
 Summary: Library for special Qt wrapper for libolm.
 Group: System/Libraries
+%rename %{_lib}qtolm3
 
 %description -n %{libname}
 Library for special Qt wrapper for libolm.
@@ -34,6 +35,7 @@ Library for special Qt wrapper for libolm.
 Summary: Development files for %{name}
 Group: Development/KDE and Qt
 Requires: %{libname} = %{EVRD}
+%rename %{_lib}qtolm-devel
 
 %description -n %{develname}
 Development files for libQtOlm.
