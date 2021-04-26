@@ -1,20 +1,18 @@
+%define appname QtOlm
 %define major 3
-%define libpackage %mklibname qtolm %{major}
-%define devpackage %mklibname -d qtolm
+%define libname %mklibname %{appname} %{major}
+%define develname %mklibname -d %{appname}
 
 %undefine __cmake_in_source_build
-%global appname QtOlm
-%global libname lib%{appname}
 
+Summary: Qt wrapper for libolm
 Name: libqtolm
 Version: 3.0.1
-Release: 1
-
+Release: 2
 License: GPLv3+
+Group: System/libraries
 URL: https://gitlab.com/b0/libqtolm/
-Summary: Qt wrapper for libolm
 Source0: https://gitlab.com/b0/libqtolm/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-
 BuildRequires: cmake(Olm)
 BuildRequires: cmake(Qt5Core)
 BuildRequires: cmake(Qt5Network)
@@ -25,19 +23,20 @@ BuildRequires: ninja
 %description
 Special Qt wrapper for libolm library.
 
-%package -n %{libpackage}
-Group:		System/Libraries
-Summary:	Library for special Qt wrapper for libolm.
+%package -n %{libname}
+Summary: Library for special Qt wrapper for libolm.
+Group: System/Libraries
 
-%description -n %{libpackage}
+%description -n %{libname}
 Library for special Qt wrapper for libolm.
 
-%package -n %{devpackage}
+%package -n %{develname}
 Summary: Development files for %{name}
-Requires:	%{libpackage} = %{EVRD}
+Group: Development/KDE and Qt
+Requires: %{libname} = %{EVRD}
 
-%description -n %{devpackage}
-Development files for libQtOlm
+%description -n %{develname}
+Development files for libQtOlm.
 
 %prep
 %autosetup -n %{name}-v%{version}
@@ -46,17 +45,18 @@ Development files for libQtOlm
 %cmake -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_INCLUDEDIR:PATH="include/%{appname}"
+
 %ninja_build
 
 %install
 %ninja_install -C build
 
-%files -n %{libpackage}
+%files -n %{libname}
 %license LICENSE
-%{_libdir}/%{libname}.so.%{major}*
+%{_libdir}/lib*%{appname}*.so.%{major}*
 
-%files -n %{devpackage}
-%{_includedir}/%{appname}/
-%{_libdir}/cmake/%{appname}/
+%files -n %{develname}
+%{_includedir}/%{appname}
+%{_libdir}/cmake/%{appname}
 %{_libdir}/pkgconfig/%{appname}.pc
-%{_libdir}/%{libname}.so
+%{_libdir}/lib*%{appname}.so
