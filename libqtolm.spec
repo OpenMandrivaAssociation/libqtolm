@@ -8,7 +8,7 @@
 Summary: Qt wrapper for libolm
 Name: libqtolm
 Version: 3.0.1
-Release: 3
+Release: 4
 License: GPLv3+
 Group: System/libraries
 URL: https://gitlab.com/b0/libqtolm/
